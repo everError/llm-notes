@@ -15,6 +15,7 @@ rag-notes/
 ├── notes/
 │   ├── rag_basics.md          # RAG 기본 개념 정리
 │   ├── LangChain_basics.md    # LangChain 기본 개념 정리
+│   ├── Langchain_Rag_Components.md # LangChain의 주요 RAG 컴포넌트
 ```
 
 ## 프로젝트 목표

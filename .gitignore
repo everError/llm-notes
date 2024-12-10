@@ -1,2 +1,6 @@
 # Ignore all .env files in all directories
 *.env
+
+# 제외 폴더
+experiments/langchain_env/data/**
+experiments/langchain_env/chroma_db/**
