@@ -7,9 +7,11 @@
 rag-notes/
 ├── experiments/
 │   ├── notes/
-│   │   ├── Miniconda_notes.md  # Miniconda 간단 정리 및 명령어
-│   │   ├── Poetry_notes.md     # Poetry 간단 정리 및 명령어
-│   │   ├── Jupyter_notes.md    # Jupyter Notebook 간단 정리
+│   │   ├── Miniconda_basics.md  # Miniconda 간단 정리 및 명령어
+│   │   ├── Poetry_basics.md     # Poetry 간단 정리 및 명령어
+│   │   ├── JupyterNotebook_basics.md    # Jupyter Notebook 간단 정리
+│   │   ├── Gradio_basics.md    # Gradio 간단 정리 및 명령어
+│   │   ├── LCEL_basics.md      # LCEL 간단 정리
 │   ├── conda_rag/              # Conda로 생성한 테스트 실습 프로젝트
 │   ├── langchain_env/          # Poetry로 생성한 LangChain 샘플 프로젝트
 ├── notes/
