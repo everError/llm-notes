@@ -26,6 +26,7 @@ rag-notes/
 │   ├── LCEL_basics.md                      # LCEL 간단 정리
 │   ├── LangChain_Document_Loaders.md       # LangChain의 Document Loaders 정리
 │   ├── LangChain_Text_Splitters.md         # LangChain의 Text Splitters 정리
+│   ├── Embedding_Models.md                 # EmbeddingModel 기본 개념 정리
 ```
 
 - **experiments/**: 실습 프로젝트와 관련된 폴더.
