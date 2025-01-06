@@ -19,6 +19,7 @@ rag-notes/
 │   │   ├── DocumentLoader_RAG.ipynb        # 문서읽기 및 간단한 RAG 구현 실습
 │   │   ├── LCEL.ipynb                      # LCEL 실습
 │   │   ├── Data_Processing.ipynb           # 데이터 처리 및 임베딩 실습
+│   │   ├── Vectorstore_Retrieval           # 여러 벡터저장소 검색기 사용
 ├── notes/
 │   ├── rag_basics.md                       # RAG 기본 개념 정리
 │   ├── LangChain_basics.md                 # LangChain 기본 개념 정리
@@ -27,6 +28,7 @@ rag-notes/
 │   ├── LangChain_Document_Loaders.md       # LangChain의 Document Loaders 정리
 │   ├── LangChain_Text_Splitters.md         # LangChain의 Text Splitters 정리
 │   ├── Embedding_Models.md                 # EmbeddingModel 기본 개념 정리
+│   ├── RAG_Search_Engines                  # RAG 검색 방식
 ```
 
 - **experiments/**: 실습 프로젝트와 관련된 폴더.
