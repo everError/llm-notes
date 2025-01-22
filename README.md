@@ -33,6 +33,7 @@ rag-notes/
 │   ├── RAG_Search_Engines                                # RAG 검색 방식
 │   ├── Chroma_FAISS                                      # Chroma, FAISS 비교
 │   ├── Understanding_Similarity_And_Relevance_Score      # Vector 유사도, 관련성
+│   ├── Advanced_Search_Techniques_In_RAG                 # RAG 검색 기법
 ```
 
 - **experiments/**: 실습 프로젝트와 관련된 폴더.
