@@ -23,17 +23,19 @@ rag-notes/
 │   │   ├── Data_Processing.ipynb                         # 데이터 처리 및 임베딩 실습
 │   │   ├── Vectorstore_Retrieval                         # 여러 벡터저장소 검색기 사용
 ├── notes/
-│   ├── rag_basics.md                                     # RAG 기본 개념 정리
-│   ├── LangChain_basics.md                               # LangChain 기본 개념 정리
-│   ├── Langchain_Rag_Components.md                       # LangChain의 주요 RAG 컴포넌트
-│   ├── LCEL_basics.md                                    # LCEL 간단 정리
-│   ├── LangChain_Document_Loaders.md                     # LangChain의 Document Loaders 정리
-│   ├── LangChain_Text_Splitters.md                       # LangChain의 Text Splitters 정리
-│   ├── Embedding_Models.md                               # EmbeddingModel 기본 개념 정리
-│   ├── RAG_Search_Engines                                # RAG 검색 방식
-│   ├── Chroma_FAISS                                      # Chroma, FAISS 비교
-│   ├── Understanding_Similarity_And_Relevance_Score      # Vector 유사도, 관련성
 │   ├── Advanced_Search_Techniques_In_RAG                 # RAG 검색 기법
+│   ├── Chroma_FAISS                                      # Chroma, FAISS 비교
+│   ├── Embedding_Models.md                               # EmbeddingModel 기본 개념 정리
+│   ├── LangChain_basics.md                               # LangChain 기본 개념 정리
+│   ├── LangChain_Document_Loaders.md                     # LangChain의 Document Loaders 정리
+│   ├── Langchain_Rag_Components.md                       # LangChain의 주요 RAG 컴포넌트
+│   ├── LangChain_Text_Splitters.md                       # LangChain의 Text Splitters 정리
+│   ├── LCEL_basics.md                                    # LCEL 간단 정리
+│   ├── RAG_basics.md                                     # RAG 기본 개념 정리
+│   ├── RAG_Evaluation.md                                 # RAG 검색 시스템 평가 및 데이터셋 준비
+│   ├── RAG_Search_Engines                                # RAG 검색 방식
+│   ├── Understanding_Similarity_And_Relevance_Score      # Vector 유사도, 관련성
+
 ```
 
 - **experiments/**: 실습 프로젝트와 관련된 폴더.
