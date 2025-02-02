@@ -16,6 +16,7 @@ rag-notes/
 │   │   ├── Poetry_basics.md                              # Poetry 간단 정리 및 명령어
 │   │   ├── JupyterNotebook_basics.md                     # Jupyter Notebook 간단 정리
 │   │   ├── Gradio_basics.md                              # Gradio 간단 정리 및 명령어
+│   │   ├── Langsmith.md                                  # Langsmith 간단 정리
 │   ├── conda_rag/                                        # Conda로 생성한 테스트 실습 프로젝트
 │   ├── langchain_env/                                    # Poetry로 생성한 LangChain 샘플 프로젝트
 │   │   ├── DocumentLoader_RAG.ipynb                      # 문서읽기 및 간단한 RAG 구현 실습
@@ -23,8 +24,9 @@ rag-notes/
 │   │   ├── Data_Processing.ipynb                         # 데이터 처리 및 임베딩 실습
 │   │   ├── Vectorstore_Retrieval                         # 여러 벡터저장소 검색기 사용
 ├── notes/
-│   ├── Advanced_Search_Techniques_In_RAG                 # RAG 검색 기법
-│   ├── Chroma_FAISS                                      # Chroma, FAISS 비교
+│   ├── Advanced_Search_Methods.mcd                       # 고급 검색 기법
+│   ├── Advanced_Search_Techniques_In_RAG.md              # RAG 검색 기법
+│   ├── Chroma_FAISS.md                                   # Chroma, FAISS 비교
 │   ├── Embedding_Models.md                               # EmbeddingModel 기본 개념 정리
 │   ├── LangChain_basics.md                               # LangChain 기본 개념 정리
 │   ├── LangChain_Document_Loaders.md                     # LangChain의 Document Loaders 정리
@@ -33,8 +35,8 @@ rag-notes/
 │   ├── LCEL_basics.md                                    # LCEL 간단 정리
 │   ├── RAG_basics.md                                     # RAG 기본 개념 정리
 │   ├── RAG_Evaluation.md                                 # RAG 검색 시스템 평가 및 데이터셋 준비
-│   ├── RAG_Search_Engines                                # RAG 검색 방식
-│   ├── Understanding_Similarity_And_Relevance_Score      # Vector 유사도, 관련성
+│   ├── RAG_Search_Engines.md                             # RAG 검색 방식
+│   ├── Understanding_Similarity_And_Relevance_Score.md   # Vector 유사도, 관련성
 
 ```
 
