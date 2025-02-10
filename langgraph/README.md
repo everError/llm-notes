@@ -4,5 +4,5 @@
 langgraph/
 ├── experiments/
 ├── notes/
-│   ├── ToolCalling.mcd                             # ToolCalling 개념 정리
+│   ├── ToolCalling.md                             # ToolCalling 개념 정리
 ```

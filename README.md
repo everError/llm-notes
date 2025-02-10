@@ -4,3 +4,11 @@
 
 1. [LangChain](./langchain)
 2. [LangGraph](./Langgraph)
+
+## 폴더 구조
+
+```
+rag-notes/
+├── notes/
+│   ├── agent.md                             # Agent 개념 정리
+```
