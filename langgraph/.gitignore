@@ -1,0 +1,7 @@
+# Ignore all .env files in all directories
+*.env
+
+# 제외 폴더
+experiments/langgraph_agent/data/**
+experiments/langgraph_agent/chroma_db/**
+experiments/langgraph_agent/faiss_ai_smaple_index/**
