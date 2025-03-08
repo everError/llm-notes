@@ -2,6 +2,6 @@
 *.env
 
 # 제외 폴더
-experiments/langchain_env/data/**
-experiments/langchain_env/chroma_db/**
-experiments/langchain_env/faiss_ai_smaple_index/**
+experiments/langchain_env/data/
+experiments/langchain_env/chroma_db/
+experiments/langchain_env/faiss_ai_smaple_index/

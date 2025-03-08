@@ -2,7 +2,7 @@
 
 ## 1. Tool Calling이란?
 
-Tool Calling은 최신 LLM(Language Model)이 **외부 도구(API, DB, 계산기 등)를 필요할 때만 호출**하여 보다 정교한 응답을 생성하는 기능입니다. OpenAI의 GPT-4 Turbo에서 Function Calling의 발전된 개념으로 도입되었습니다.
+Tool Calling은 LLM(Language Model)이 **외부 도구(API, DB, 계산기 등)를 필요할 때만 호출**하여 보다 정교한 응답을 생성하는 기능입니다. OpenAI의 GPT-4 Turbo에서 Function Calling의 발전된 개념으로 도입되었습니다.
 
 ## 2. Tool Calling의 주요 특징
 
