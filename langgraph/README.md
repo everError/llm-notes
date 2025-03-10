@@ -31,6 +31,7 @@ langgraph/
 │   ├── ToolCalling.md                              # ToolCalling 개념 정리
 │   ├── LangChainBuiltinTools                       # LangChain 내장 도구
 │   ├── LangChainTool                               # Tool 의 개념 및 활용
+│   ├── LangChainToolDef                            # 랭체인에서 Tool 정의
 ```
 
 ## 참고
