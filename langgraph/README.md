@@ -32,6 +32,7 @@ langgraph/
 │   ├── LangChainBuiltinTools                       # LangChain 내장 도구
 │   ├── LangChainTool                               # Tool 의 개념 및 활용
 │   ├── LangChainToolDef                            # 랭체인에서 Tool 정의
+│   ├── lib/                                        # 개발에 사용한 클래스 등 정리
 ```
 
 ## 참고
