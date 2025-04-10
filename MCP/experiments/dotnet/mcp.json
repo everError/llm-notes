@@ -1,0 +1,14 @@
+{
+    "inputs": [],
+    "mcpServers": {
+        "sqlserver-mcp": {
+            "type": "stdio",
+            "command": "dotnet",
+            "args": [
+                "run",
+                "--project",
+                "[실행경로]\\sqlserver-mcp.csproj"
+            ]
+        }
+    }
+  }
