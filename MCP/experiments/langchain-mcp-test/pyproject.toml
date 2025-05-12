@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "langgraph-mcp-demo"
+version = "0.1.0"
+description = "LangGraph MCP 실습 프로젝트"
+authors = ["Your Name <your@email.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+# LangGraph + MCP
+langgraph = "*"
+langchain-mcp-adapters = "*"
+
+# LangChain + OpenAI 연동
+langchain = "*"
+langchain-openai = "*"
+openai = "*"
+
+# 환경변수
+python-dotenv = "*"
+
+# ✅ Weather 도구용 FastAPI SSE 서버
+fastapi = "^0.110.0"
+sse-starlette = "^1.6.1"
+uvicorn = "^0.29.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

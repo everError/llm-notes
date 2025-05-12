@@ -1,0 +1,9 @@
+# Ignore all .env files in all directories
+*.env
+*.lock
+
+# 제외 폴더
+__pycache__/
+data/
+chroma_db/
+faiss_ai_smaple_index/

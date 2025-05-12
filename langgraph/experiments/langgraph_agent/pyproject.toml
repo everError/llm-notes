@@ -2,7 +2,7 @@
 name = "langgraph-agent"
 version = "0.1.0"
 description = ""
-authors = ["wogjs6028 <wogjs6028@gmail.com>"]
+authors = ["Your Name <your@email.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
