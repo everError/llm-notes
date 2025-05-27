@@ -1,0 +1,84 @@
+# .NET Core 기본
+bin/
+obj/
+out/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+.history/
+
+# Build results
+*.dll
+*.exe
+*.app
+*.pdb
+*.cache
+*.zip
+*.log
+*.vsix
+
+# Nuke build system
+.nuke/
+
+# Others
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+
+# Secret files
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# dotnet tools
+.dotnet_tool*
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Test results
+TestResults/
+coverage/
+
+# Global JSON
+global.json
+
+# Paket
+.paket/
+paket-files/
+
+# JetBrains Rider additional
+.idea/
+*.sln.iml
+
+# Visual Studio 캐시 및 설정 파일
+.vs/
+*.user
+*.suo
+*.db
+*.v2
+*.vsidx
+*.backup.json
+*.DocumentLayout.json
