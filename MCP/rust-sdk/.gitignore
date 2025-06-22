@@ -1,0 +1,42 @@
+# ─── Rust 기본 빌드 출력 ────────────────
+/**/target/
+**/*.rs.bk
+
+# ─── Cargo 관련 ────────────────────────
+/**/Cargo.lock
+.cargo/
+
+# ─── IDE 및 에디터 ─────────────────────
+# VSCode
+.vscode/
+**/.vscode/
+*.code-workspace
+
+# JetBrains (CLion 등)
+.idea/
+**/.idea/
+*.iml
+
+# ─── OS 및 시스템 캐시 ─────────────────
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+*~
+
+# ─── 임시 파일 및 로그 ─────────────────
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# ─── 테스트 실행 파일 ─────────────────
+*.exe
+*.out
+*.bin
+*.dSYM/
+
+# ─── 기타 ─────────────────────────────
+coverage/
+*.profraw

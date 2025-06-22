@@ -1,0 +1,23 @@
+[package]
+name = "mcp-demo"       # 이 프로젝트(크레이트)의 이름. 바이너리 이름도 이 이름이 됨
+version = "0.1.0"       # 프로젝트 버전 (Semantic Versioning)
+edition = "2024"        # Rust edition (2021 또는 최신 2024). 최신 문법, 라이프타임 개선 등 적용됨
+
+[dependencies]
+rmcp = { 
+  version = "0.1.5",         # MCP 프로토콜을 구현한 공식 Rust 라이브러리의 최신 버전
+  features = ["server"]      # 'ToolRouter' 등 HTTP 서버 기능을 활성화하기 위한 선택적 기능
+}
+
+tokio = { 
+  version = "1",             # Rust의 대표적인 비동기 런타임 (I/O, 네트워킹 등에 사용)
+  features = ["full"]        # 모든 tokio 기능 (runtime, macros, net, time 등)을 활성화
+}
+
+serde = { 
+  version = "1.0",           # Rust의 표준 직렬화/역직렬화 라이브러리
+  features = ["derive"]      # #[derive(Serialize, Deserialize)] 사용을 가능하게 함
+}
+
+serde_json = "1.0"           # JSON 데이터를 처리하기 위한 라이브러리 (serde 기반)
+                             # 특별한 feature 없이도 기본 기능만으로 JSON 파싱/생성 가능
