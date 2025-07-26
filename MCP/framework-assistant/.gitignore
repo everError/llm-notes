@@ -1,0 +1,65 @@
+# ## General ##
+# OS-generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ## .NET ##
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Secrets
+secrets.json
+appsettings.Development.json
+
+# User-specific files
+*.rsuser
+*.DotSettings.user
+
+# Build and package results
+*.nupkg
+*.nuget.props
+*.nuget.targets
+
+# ## ASP.NET Core ##
+# Log files
+*.log
+logs/
+
+# Entity Framework
+*.efbundle
+
+# IIS Express
+apphost.config
+
+# Publishing
+publish/
+*.pubxml
+*.pubxml.user
+
+# Other
+*.pidb
+*.pyc
+*.pyo
+*.rbc
+*.sass-cache
+*.vsp
+*.vspx
+*.psess
+node_modules/
