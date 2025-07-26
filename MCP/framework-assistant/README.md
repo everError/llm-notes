@@ -20,10 +20,9 @@
 
 ## 🛠️ 핵심 기술 및 아키텍처
 
-* **AI Agent (e.g., Large Language Model based agents):** 사용자와 상호작용하는 기본 인터페이스이자, 최종 코드를 생성하는 주체입니다.
-* **MCP Server (Framework-Assistant):** AI 에이전트에게 특정 도메인의 지식과 '도구(Tools)'를 제공하는 서버입니다.
-* **Semantic Kernel:** Framework-Assistant의 핵심 두뇌 역할을 수행합니다. 플러그인(Plugins) 기반 아키텍처를 통해 프레임워크의 규칙, 컴포넌트 템플릿, 코드 스니펫 등을 체계적으로 관리하고, AI 에이전트의 요청에 가장 적합한 정보를 검색하여 제공합니다.
+* **MCP Server (Framework-Assistant):** AI 에이전트에게 특정 도메인의 지식과 '도구(Tools)'를 제공하는 서버입니다. **ASP.NET Core**를 기반으로 구현됩니다.
 * **Vector Database (e.g., ChromaDB, FAISS):** 프레임워크 문서, 개발 규칙, 코드 스니펫 등의 정보를 **의미 기반으로 검색**할 수 있도록 벡터 형태로 저장하는 데이터베이스입니다.
+* **.NET MCP 라이브러리 활용:** 서버 구현을 위해 **`ModelContextProtocol.AspNetCore`** NuGet 패키지를 사용합니다. 이 라이브러리는 MCP 프로토콜 통신, HTTP 엔드포인트 설정, 도구 자동 등록(`WithToolsFromAssembly`) 등 MCP 서버에 필요한 기반 인프라를 제공하여 개발자가 비즈니스 로직에 집중할 수 있도록 돕습니다.
 
 ### 동작 방식
 
