@@ -1,8 +1,3 @@
-using ChromaDB.Client;
-using Microsoft.SemanticKernel.Connectors.Chroma;
-using Microsoft.SemanticKernel.Embeddings;
-using Microsoft.SemanticKernel.Memory;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
