@@ -63,3 +63,5 @@ publish/
 *.vspx
 *.psess
 node_modules/
+#
+**/Docs/
