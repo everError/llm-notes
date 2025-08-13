@@ -1,19 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
 using SemanticKernelAgent.Models;
 
 namespace SemanticKernelAgent.Controllers;
 
 [ApiController]
 [Route("agent")]
-public class AgentController : ControllerBase
+public class AgentController(Kernel kernel) : ControllerBase
 {
-    private readonly Kernel _kernel;
-
-    public AgentController(Kernel kernel)
-    {
-        _kernel = kernel;
-    }
+    private readonly Kernel _kernel = kernel;
 
     [HttpPost("ask")]
     public async Task<IActionResult> AskAsync([FromBody] QuestionRequest request)
@@ -29,8 +25,15 @@ public class AgentController : ControllerBase
 
         답변:
         """;
-
-        var result = await _kernel.InvokePromptAsync(prompt);
+        // Enable automatic function calling
+#pragma warning disable SKEXP0001 // 형식은 평가 목적으로 제공되며, 이후 업데이트에서 변경되거나 제거될 수 있습니다. 계속하려면 이 진단을 표시하지 않습니다.
+        OpenAIPromptExecutionSettings executionSettings = new()
+        {
+            Temperature = 0,
+            FunctionChoiceBehavior = FunctionChoiceBehavior.Auto(options: new() { RetainArgumentTypes = true })
+        };
+#pragma warning restore SKEXP0001 // 형식은 평가 목적으로 제공되며, 이후 업데이트에서 변경되거나 제거될 수 있습니다. 계속하려면 이 진단을 표시하지 않습니다.
+        var result = await _kernel.InvokePromptAsync(prompt, new(executionSettings));
         return Ok(result.ToString());
     }
     [HttpPost("ask-sse")]
@@ -52,8 +55,8 @@ public class AgentController : ControllerBase
         답변:
         """;
 
-        Response.Headers["Content-Type"] = "text/event-stream";
-        Response.Headers["Cache-Control"] = "no-cache";
+        Response.Headers.ContentType = "text/event-stream";
+        Response.Headers.CacheControl = "no-cache";
         Response.Headers["X-Accel-Buffering"] = "no"; // nginx 버퍼링 방지
         Response.StatusCode = 200;
 
