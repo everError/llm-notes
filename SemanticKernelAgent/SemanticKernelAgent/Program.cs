@@ -1,38 +1,68 @@
+ï»¿using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using ModelContextProtocol.Client;
+using SemanticKernelAgent.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
 builder.AddServiceDefaults();
-builder.Services.AddLogging(c => c.AddDebug().SetMinimumLevel(LogLevel.Trace));
-// Create an MCPClient for the GitHub server
-await using IMcpClient mcpClient = await McpClientFactory.CreateAsync(new StdioClientTransport(new()
+
+var apiKey = builder.Configuration["OpenAI:ApiKey"] ?? throw new Exception("OpenAI:ApiKey is required");
+//
+// ë¡œê±° ì„¤ì •
+using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+
+// 
+//var transport = new StreamableHttpClientTransport(new()
+//{
+//    BaseUri = new Uri("http://localhost:5298/mcp") // ì„œë²„ ì£¼ì†Œì™€ MapMcp ê²½ë¡œ
+//});
+
+//await using var client = await McpClientFactory.CreateAsync(
+//    transport,
+//    loggerFactory: loggerFactory
+//);
+//
+// ìºì‹œ ì„œë¹„ìŠ¤ë¥¼ DIì— ì¶”ê°€í•©ë‹ˆë‹¤.
+builder.Services.AddMemoryCache();
+
+builder.Services.AddSingleton(async sp =>
 {
-    Name = "GitHub",
-    Command = "npx",
-    Arguments = ["-y", "@modelcontextprotocol/server-github"],
-}));
-// Retrieve the list of tools available on the GitHub server
-var tools = await mcpClient.ListToolsAsync().ConfigureAwait(false);
-foreach (var tool in tools)
-{
-    Console.WriteLine($"{tool.Name}: {tool.Description}");
-}
-// Semantic Kernel µî·Ï
-builder.Services.AddSingleton(sp =>
-{
+    // 1. ì‹¤ì œ OpenAI ì„œë¹„ìŠ¤ë¥¼ ë¨¼ì € ìƒì„±í•©ë‹ˆë‹¤.
+    //    (DIì— ì§ì ‘ ë“±ë¡í•˜ì§€ ì•Šê³  KernelBuilder ë‚´ë¶€ì—ì„œë§Œ ì‚¬ìš©)
+    var innerService = new OpenAIChatCompletionService("gpt-4o-mini", apiKey);
+
+    // 2. ìºì‹± ë°ì½”ë ˆì´í„°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
+    var cache = sp.GetRequiredService<IMemoryCache>();
+    var cachingService = new CachingChatCompletionService(innerService, cache);
+
+    // 3. KernelBuilderë¥¼ ìƒì„±í•˜ê³ , ìµœì¢…ì ìœ¼ë¡œ ë°ì½”ë ˆì´íŒ…ëœ ì„œë¹„ìŠ¤ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
     var kernelBuilder = Kernel.CreateBuilder();
-#pragma warning disable SKEXP0001 // Çü½ÄÀº Æò°¡ ¸ñÀûÀ¸·Î Á¦°øµÇ¸ç, ÀÌÈÄ ¾÷µ¥ÀÌÆ®¿¡¼­ º¯°æµÇ°Å³ª Á¦°ÅµÉ ¼ö ÀÖ½À´Ï´Ù. °è¼ÓÇÏ·Á¸é ÀÌ Áø´ÜÀ» Ç¥½ÃÇÏÁö ¾Ê½À´Ï´Ù.
-    kernelBuilder.Plugins.AddFromFunctions("GitHub", tools.Select(aiFunction => aiFunction.AsKernelFunction()));
-#pragma warning restore SKEXP0001 // Çü½ÄÀº Æò°¡ ¸ñÀûÀ¸·Î Á¦°øµÇ¸ç, ÀÌÈÄ ¾÷µ¥ÀÌÆ®¿¡¼­ º¯°æµÇ°Å³ª Á¦°ÅµÉ ¼ö ÀÖ½À´Ï´Ù. °è¼ÓÇÏ·Á¸é ÀÌ Áø´ÜÀ» Ç¥½ÃÇÏÁö ¾Ê½À´Ï´Ù.
 
-    var apiKey = builder.Configuration["OpenAI:ApiKey"] ?? throw new Exception("OpenAI:ApiKey is required");
-    kernelBuilder.AddOpenAIChatCompletion("gpt-4o-mini", apiKey);
+    // Kernelì˜ ì„œë¹„ìŠ¤ ì»¬ë ‰ì…˜ì— ì§ì ‘ ì¶”ê°€í•©ë‹ˆë‹¤.
+    kernelBuilder.Services.AddSingleton<IChatCompletionService>(cachingService);
+    // 4. MCP ì„œë²„ì— ì—°ê²°
+    //var mcpClient = await McpClientFactory.CreateAsync(
+    //        new HttpClientTransport(new()
+    //        {
+    //            Uri = new Uri("http://localhost:5298/mcp") // MCP ì„œë²„ ì£¼ì†Œ
+    //        })
+    //    );
 
+    //// 5. MCP ì„œë²„ì˜ ëª¨ë“  íˆ´ì„ ë¶ˆëŸ¬ì™€ì„œ Pluginìœ¼ë¡œ ë“±ë¡
+    //var tools = await mcpClient.ListToolsAsync().ConfigureAwait(false);
+    //kernelBuilder.Plugins.AddFromFunctions(
+    //    "McpTools",
+    //    tools.Select(tool => tool.AsKernelFunction())
+    //);
+
+    // 5. ëª¨ë“  ì„¤ì •ì´ ì™„ë£Œëœ Kernelì„ ë¹Œë“œí•˜ì—¬ ë°˜í™˜í•©ë‹ˆë‹¤.
     return kernelBuilder.Build();
 });
 
-//
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -45,8 +75,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-
 app.Run();
