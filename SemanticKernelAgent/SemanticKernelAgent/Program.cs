@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Memory;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
@@ -15,17 +14,6 @@ var apiKey = builder.Configuration["OpenAI:ApiKey"] ?? throw new Exception("Open
 // 로거 설정
 using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
 
-// 
-//var transport = new StreamableHttpClientTransport(new()
-//{
-//    BaseUri = new Uri("http://localhost:5298/mcp") // 서버 주소와 MapMcp 경로
-//});
-
-//await using var client = await McpClientFactory.CreateAsync(
-//    transport,
-//    loggerFactory: loggerFactory
-//);
-//
 // 캐시 서비스를 DI에 추가합니다.
 builder.Services.AddMemoryCache();
 
@@ -45,15 +33,18 @@ builder.Services.AddSingleton(async sp =>
     // Kernel의 서비스 컬렉션에 직접 추가합니다.
     kernelBuilder.Services.AddSingleton<IChatCompletionService>(cachingService);
     // 4. MCP 서버에 연결
-    //var mcpClient = await McpClientFactory.CreateAsync(
-    //        new HttpClientTransport(new()
-    //        {
-    //            Uri = new Uri("http://localhost:5298/mcp") // MCP 서버 주소
-    //        })
-    //    );
+    var transport = new SseClientTransport(new()
+    {
+        Endpoint = new Uri("http://localhost:5298/mcp")
+    });
+    var mcpClient = await McpClientFactory.CreateAsync(transport);
 
     //// 5. MCP 서버의 모든 툴을 불러와서 Plugin으로 등록
-    //var tools = await mcpClient.ListToolsAsync().ConfigureAwait(false);
+    var tools = await mcpClient.ListToolsAsync();
+    foreach (var tool in tools)
+    {
+        Console.WriteLine($"발견된 도구: {tool.Name}");
+    }
     //kernelBuilder.Plugins.AddFromFunctions(
     //    "McpTools",
     //    tools.Select(tool => tool.AsKernelFunction())
