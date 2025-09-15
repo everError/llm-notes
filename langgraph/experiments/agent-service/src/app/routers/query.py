@@ -2,8 +2,13 @@ from fastapi import APIRouter
 from app.schemas.query import QueryRequest, QueryResponse
 from app.services.llm_service import ask_agent
 
-router = APIRouter()
+# API 문서의 가독성을 위해 prefix와 tags를 추가
+router = APIRouter(
+    prefix="/query",
+    tags=["LLM Query"]
+)
 
+# 이제 경로는 자동으로 "/query/" 가 됩니다.
 @router.post("/", response_model=QueryResponse)
 async def handle_query(request: QueryRequest) -> QueryResponse:
     """

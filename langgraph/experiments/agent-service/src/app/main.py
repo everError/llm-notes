@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.llm import query
+from app.routers import query, chats
 from contextlib import asynccontextmanager
 from app.services.llm_service import initialize_agent
 
@@ -20,8 +20,8 @@ app = FastAPI(
 )
 
 # query 라우터를 앱에 포함시킵니다.
-# /api/v1/query 경로로 접근할 수 있게 됩니다.
-app.include_router(query.router, prefix="/api/v1/query", tags=["Query"])
+app.include_router(query.router)
+app.include_router(chats.router)
 
 @app.get("/")
 def read_root():

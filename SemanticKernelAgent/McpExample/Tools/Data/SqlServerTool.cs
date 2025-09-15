@@ -23,6 +23,37 @@ public class SqlServerTool
         _connectionString = configuration.GetConnectionString("DefaultConnection")
                             ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found in appsettings.json.");
     }
+    [McpServerTool, Description("Get Table List")]
+    public string GetTables()
+    {
+        var obj = new Dictionary<string, string>()
+        {
+            {"거래처", "account" }
+        };
+        return JsonSerializer.Serialize(obj);
+    }
+    [McpServerTool, Description("Get account table`s Domain")]
+    public string GetAccountTableDomain()
+    {
+        var obj = new Dictionary<string, string>()
+        {
+            { "account_key", "거래처키, bigint" },
+            { "account_code", "거래처코드, nvarchar" },
+            { "account_name", "거래처명, nvarchar" },
+            { "account_alias", "거래처 별칭, nvarchar" },
+            { "is_purchase_office", "매입업체 여부, bit" },
+            { "is_sales_office", "매출업체 여부, bit" },
+            { "is_use", "사용 여부, bit" },
+            { "remarks", "비고, nvarchar" },
+            { "log_key", "로그키, bigint" },
+            { "account_number", "거래처번호, nvarchar" },
+            { "address", "주소, nvarchar" },
+            { "ceo_name", "대표자명, nvarchar" },
+            { "industry_type", "산업유형, nvarchar" },
+            { "industry_class", "산업분류, nvarchar" },
+        };
+        return JsonSerializer.Serialize(obj);
+    }
     [McpServerTool, Description("Executes a read-only SQL SELECT query and returns the result as a JSON string. Only queries starting with 'SELECT' are allowed.")]
     public async Task<string> ExecuteQueryAsync(
         [Description("The SQL query to execute. Must start with 'SELECT'.")] string query)
