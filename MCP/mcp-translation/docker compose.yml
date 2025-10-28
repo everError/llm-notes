@@ -1,0 +1,12 @@
+services:
+  mcp-tr:
+    image: <addr>/mcp-translation:<version>
+    container_name: mcp-tr-server
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_HOST=http://<addr>:11434
+      - MODEL_NAME=hf.co/mradermacher/YanoljaNEXT-Rosetta-12B-2510-i1-GGUF:Q4_K_M
+      - DEFAULT_CONTEXT=Helpful
+      - DEFAULT_TONE=Natural
+    restart: unless-stopped
