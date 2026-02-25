@@ -1,26 +1,37 @@
 # LLM 노트
 
-이 레포지토리는 LLM을 활용한 정보 검색(Retrieval-Augmented Generation, RAG)과 멀티에이전트 시스템을 포함한 다양한 AI 활용 기법을 학습하고 실습한 내용을 기록하기 위해 만들어졌습니다.
-
-LangChain과 LangGraph를 활용한 에이전트 구성, ToolCalling을 통한 결론 도출 등 다양한 기법을 연구하며, 이를 통해 AI 기반의 지능형 시스템을 개발하는 데 초점을 맞추고 있습니다.
-
-- [LangChain 생태계 v1](./langchain_v1/)
+LLM을 활용한 다양한 AI 기법을 학습하고 기록하는 레포지토리입니다.
+LLM 프레임워크, RAG, 에이전트 시스템, MCP 등을 다룹니다.
 
 ---
 
-- [LangChain 강의정리 및 실습](./langchain)
-- [LangGraph API 개발](./langgraph)
-- [SemanticKernelAgent](./SemanticKernelAgent/)
-- [MCP](./MCP)
-  - [fastMCP translate mcp](./MCP/mcp-translation/)
-  - [dotnet document query mcp](./MCP/dotnet/)
+## LangChain
 
-## 폴더 구조
+LLM 애플리케이션 개발을 위한 Python 프레임워크입니다. 체인 구성, 메모리 관리, 도구 연동 등 LLM 파이프라인 전반을 다룹니다.
 
-```
-rag-notes/
-├── notes/
-│   ├── agent.md                             # Agent 개념 정리
-│   ├── transformer_onnx                     # Transformer, ONNX 개념
-...
-```
+- [LangChain v1.0 정리](./langchain_v1/)
+- [LangChain 정리 및 실습](./langchain/)
+
+---
+
+## LangGraph
+
+LangChain 기반의 멀티에이전트 워크플로우 프레임워크입니다. 상태 기반 그래프 구조로 복잡한 에이전트 흐름을 설계하는 방법을 다룹니다.
+
+- [LangGraph 정리](./langgraph/)
+
+---
+
+## Semantic Kernel
+
+Microsoft에서 개발한 LLM 오케스트레이션 SDK입니다. .NET 환경에서 AI 에이전트를 구성하고 Tool Calling을 통한 결론 도출을 다룹니다.
+
+- [Semantic Kernel Agent](./SemanticKernelAgent/)
+
+---
+
+## MCP (Model Context Protocol)
+
+Anthropic이 제안한 LLM과 외부 도구 간의 표준 통신 프로토콜입니다. 다양한 MCP 서버를 직접 구현하며 LLM에 외부 기능을 연동하는 방법을 다룹니다.
+
+- [MCP 정리](./MCP/)
